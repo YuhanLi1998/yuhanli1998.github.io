@@ -1,0 +1,567 @@
+/* ============================================
+   Academic Portfolio — Single-page, three-column.
+   White bg, black text, UMich dark-blue accent.
+   ============================================ */
+
+:root {
+  --bg: #ffffff;
+  --ink: #111111;
+  --ink-soft: #333333;
+  --ink-muted: #7a7a7a;
+  --line-soft: #e6e6e6;
+
+  /* Cornflower blue accent */
+  --accent: #6495ED;            /* cornflower blue — links, highlights */
+  --accent-strong: #4a7fd1;     /* darker hover */
+  --accent-bg: #eef3fd;         /* soft tinted background */
+  --accent-bg-border: #c8d6f5;  /* soft border */
+  --accent-tint-rgb: 100, 149, 237; /* for rgba() overlays */
+
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+          Helvetica, Arial, "PingFang SC", "Hiragino Sans GB",
+          "Microsoft YaHei", sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 17px;            /* GLOBAL font size — tune this one value
+                                 (14.5 was the previous small default; raise
+                                 to 18–20 for even larger text) */
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.45;           /* reduced from 1.65 */
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tabular numerals — aligns dates / years / venue numbers vertically */
+.news-date,
+.pub-venue,
+.pub-badge,
+.site-footer time { font-variant-numeric: tabular-nums; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent-strong), var(--accent-strong));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 1px;
+  padding-bottom: 1px;
+  transition: background-size 0.28s cubic-bezier(0.65, 0, 0.35, 1),
+              color 0.18s ease;
+}
+a:hover {
+  color: var(--accent-strong);
+  background-size: 100% 1px;
+  text-decoration: none;
+}
+
+/* Links that own their interaction (sidebar, pub chips, hover overlay, etc.)
+   opt out of the gradient underline so they stay visually distinct. */
+.id-links a,
+.pub-link-overlay,
+.pub-links a,
+.site-footer a,
+.news-header a { background-image: none; padding-bottom: 0; }
+
+img { max-width: 100%; display: block; }
+
+/* ============================================
+   Layout — three columns with outer breathing room
+   ============================================ */
+.page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 1rem;   /* extra horizontal padding */
+  display: grid;
+  /* middle column is now capped at 720px so there's no dead space
+     between the bio and the Recent Highlights column */
+  grid-template-columns: 200px minmax(0, 720px) 260px;
+  column-gap: 2rem;            /* tighter left-to-main spacing */
+  row-gap: 2rem;
+  align-items: start;
+  justify-content: center;     /* center the three columns within the page */
+}
+
+.sidebar-left,
+.sidebar-right {
+  position: sticky;
+  top: 2.5rem;
+  align-self: start;
+}
+
+.sidebar-left  { padding-left: 0.5rem; }
+.sidebar-right { padding-right: 0.5rem; }
+
+.sidebar-right {
+  padding-right: 0.5rem;
+  /* No max-height / overflow — let the column grow with its content. */
+}
+
+/* ============================================
+   Left sidebar — identity
+   ============================================ */
+.id-name {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.id-email {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 0.85rem;
+  word-break: break-all;
+}
+
+/* Chinese name — thin, elegant serif; tight letter-spacing */
+.zh-name {
+  display: block;
+  margin-top: -0.15rem;
+  margin-bottom: 0.85rem;
+  color: var(--ink);
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC",
+               "STSong", "Microsoft YaHei", serif;
+  font-weight: 300;
+  font-size: 1.05rem;
+  letter-spacing: -0.06em;
+  line-height: 1.2;
+}
+
+.id-photo {
+  width: 100%;
+  max-width: 180px;      /* 1.2× the previous 150px */
+  aspect-ratio: 16 / 10;
+  background: #f0f0f0;
+  overflow: hidden;
+  border-radius: 2px;
+  margin-bottom: 1.15rem;
+}
+.id-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% center; /* bias right so the face is centered */
+  display: block;
+}
+
+.id-links {
+  list-style: none;
+  font-size: 0.8rem;
+  line-height: 1.75;
+}
+.id-links li a { color: var(--ink); }
+.id-links li a:hover { color: var(--accent); text-decoration: none; }
+.id-links .arrow { color: var(--ink-muted); margin-left: 0.15em; }
+
+/* ============================================
+   Main content
+   ============================================ */
+.main { max-width: 720px; }
+
+.highlight-box {
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-bg-border);
+  border-radius: 3px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+.highlight-box strong {
+  display: block;
+  font-size: 0.88rem;
+  margin-bottom: 0.3rem;
+  color: var(--ink);
+}
+
+.bio-text p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 0.85rem;
+}
+.bio-text strong { font-weight: 600; }
+
+.research-interests {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  margin-top: 0.85rem;
+}
+
+.section-header {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 2.75rem 0 0.85rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+/* ============================================
+   Publications
+   ============================================ */
+.pub-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+  align-items: start;
+}
+
+.pub-thumb {
+  position: relative;
+  background: transparent;
+  border: none;
+  overflow: hidden;
+  border-radius: 2px;
+  cursor: zoom-in;       /* signals click-to-enlarge */
+}
+.pub-thumb:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.pub-thumb img {
+  width: 100%;
+  height: auto;                 /* height follows each image's natural aspect ratio */
+  display: block;
+  /* Just a gentle desaturation — keeps original hues, quiets them down.
+     Restores to full saturation on hover. */
+  filter: saturate(0.75) brightness(1.03);
+  transition: filter 0.4s ease;
+}
+.pub-item:hover .pub-thumb img { filter: none; }
+
+/* Section divider — three dots above every .section-header */
+.section-header {
+  position: relative;
+  margin-top: 1rem;
+}
+.section-header::before {
+  content: "·  ·  ·";
+  display: block;
+  text-align: center;
+  letter-spacing: 0.45em;
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  opacity: 0.5;
+  margin-bottom: 0.55rem;
+  padding-top: 0;
+}
+
+/* Hover-reveal: no tint over the image — just the centered circular
+   chip holding the zoom-in magnifier icon. Purely visual — the click
+   handler lives on .pub-thumb (see js/main.js). */
+.pub-link-overlay {
+  position: absolute;
+  inset: 0;                               /* covers the whole thumb */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 2;
+  pointer-events: none;                   /* let clicks pass through to .pub-thumb */
+}
+.pub-item:hover .pub-link-overlay,
+.pub-thumb:focus-visible .pub-link-overlay {
+  opacity: 1;
+}
+
+/* Circular white chip behind the icon */
+.pub-link-overlay::before {
+  content: "";
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, background 0.2s ease;
+}
+.pub-link-overlay:hover::before {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.pub-link-overlay svg {
+  position: relative;  /* above the ::before chip */
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  stroke: #2c4a7d;     /* darker cornflower tone so icon reads against chip */
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.15s ease;
+}
+.pub-link-overlay:hover svg { stroke: #1f3a66; }
+
+.pub-body h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 0.25rem;
+  color: var(--ink);
+}
+.pub-authors {
+  font-size: 0.75rem;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+  line-height: 1.45;
+}
+.pub-authors .me {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  font-weight: 500;
+}
+.pub-venue {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+}
+.pub-badge {
+  display: inline-block;
+  background: #fff6d5;
+  color: #7a5a00;
+  font-size: 0.68rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  margin-left: 0.3rem;
+  vertical-align: middle;
+  font-weight: 500;
+}
+.pub-badge.best   { background: #fef1d5; color: #8a5a00; }
+.pub-badge.impact { background: #fde1d1; color: #9a4a1a; }
+
+.pub-abstract {
+  font-size: 0.70rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  line-height: 1.45;
+  margin-bottom: 0.45rem;
+}
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.6rem;
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+.pub-links a {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent);
+}
+.pub-links a::before {
+  content: "·";
+  margin-right: 0.4rem;
+  color: var(--ink-muted);
+}
+.pub-links a:first-child::before { content: none; }
+
+/* ============================================
+   Right sidebar — news
+   ============================================ */
+.news-header {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+.news-item {
+  margin-bottom: 1.2rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.news-date {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 0.25rem;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 1100px) {
+  .page {
+    grid-template-columns: 180px minmax(0, 1fr);
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+    padding: 2rem 3rem 3rem;
+  }
+  /* Unstick the left sidebar so it doesn't overlap the right sidebar
+     when the right column collapses to a full-width row below. */
+  .sidebar-left {
+    position: static;
+  }
+  .sidebar-right {
+    grid-column: 1 / -1;
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+    border-top: 1px solid var(--line-soft);
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .page {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1.25rem 2.5rem;
+    gap: 1.5rem;
+  }
+  .sidebar-left {
+    position: static;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding-left: 0;
+  }
+  .id-name  { margin-bottom: 0.25rem; }
+  .id-email { margin-bottom: 0.25rem; }
+  .id-photo {
+    width: 110px;
+    max-width: 110px;
+    aspect-ratio: 16 / 10;
+    margin-bottom: 0;
+    grid-row: 1 / span 3;
+  }
+  .id-links { grid-column: 2; }
+  .pub-item {
+    grid-template-columns: 130px 1fr;
+    gap: 0.85rem;
+  }
+  .sidebar-right {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    padding-right: 0;
+  }
+  .section-header { margin-top: 2rem; }
+}
+
+/* Legacy placeholder tint classes — no-op now that images fill the box. */
+.tint-1,
+.tint-2,
+.tint-3,
+.tint-4 { background: transparent; }
+
+/* ============================================
+   Site footer — tiny meta line
+   ============================================ */
+.site-footer {
+  margin: 0.5rem 0 0;
+  padding: 0.75rem 1rem 0.9rem;
+  border-top: 1px solid var(--line-soft);
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+}
+.site-footer p { margin: 0; }
+.site-footer .dot { margin: 0 0.45em; opacity: 0.6; }
+.site-footer a { color: var(--ink-muted); }
+.site-footer a:hover { color: var(--accent-strong); }
+
+@media (max-width: 900px) {
+  .site-footer { padding: 0.65rem 1rem 0.85rem; }
+}
+
+/* ============================================
+   Lightbox — full-screen figure preview
+   ============================================ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  cursor: zoom-out;
+}
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  cursor: default;
+  transform: scale(0.96);
+  transition: transform 0.25s ease;
+}
+.lightbox.open img {
+  transform: scale(1);
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
+}
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+.lightbox-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+@media (max-width: 700px) {
+  .lightbox { padding: 1rem; }
+  .lightbox-close { top: 0.75rem; right: 0.75rem; }
+}

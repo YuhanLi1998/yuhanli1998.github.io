@@ -119,7 +119,8 @@ img { max-width: 100%; display: block; }
 }
 
 .id-email {
-  display: block;
+  display: inline-block;      /* shrink to text width so hover underline
+                                 doesn't stretch across the sidebar */
   font-size: 0.75rem;
   color: var(--accent);
   margin-bottom: 0.85rem;
@@ -162,9 +163,22 @@ img { max-width: 100%; display: block; }
   font-size: 0.8rem;
   line-height: 1.75;
 }
-.id-links li a { color: var(--ink); }
+.id-links li a {
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
 .id-links li a:hover { color: var(--accent); text-decoration: none; }
 .id-links .arrow { color: var(--ink-muted); margin-left: 0.15em; }
+.id-links li svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: var(--ink-muted);
+  transition: color 0.18s ease;
+}
+.id-links li a:hover svg { color: var(--accent); }
 
 /* ============================================
    Main content
@@ -247,21 +261,10 @@ img { max-width: 100%; display: block; }
 }
 .pub-item:hover .pub-thumb img { filter: none; }
 
-/* Section divider — three dots above every .section-header */
+/* Section spacing — the decorative "·  ·  ·" divider was removed. */
 .section-header {
   position: relative;
   margin-top: 1rem;
-}
-.section-header::before {
-  content: "·  ·  ·";
-  display: block;
-  text-align: center;
-  letter-spacing: 0.45em;
-  font-size: 0.75rem;
-  color: var(--ink-muted);
-  opacity: 0.5;
-  margin-bottom: 0.55rem;
-  padding-top: 0;
 }
 
 /* Hover-reveal: no tint over the image — just the centered circular

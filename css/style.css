@@ -222,7 +222,7 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink);
-  margin: 2.75rem 0 0.85rem;
+  margin: 2.6rem 0 0.9rem;   /* breathing room above section titles */
   padding-bottom: 0.35rem;
   border-bottom: 1px solid var(--line-soft);
 }
@@ -260,12 +260,6 @@ img { max-width: 100%; display: block; }
   transition: filter 0.4s ease;
 }
 .pub-item:hover .pub-thumb img { filter: none; }
-
-/* Section spacing — the decorative "·  ·  ·" divider was removed. */
-.section-header {
-  position: relative;
-  margin-top: 1rem;
-}
 
 /* Hover-reveal: no tint over the image — just the centered circular
    chip holding the zoom-in magnifier icon. Purely visual — the click

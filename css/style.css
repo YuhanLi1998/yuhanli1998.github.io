@@ -219,9 +219,9 @@ img { max-width: 100%; display: block; }
    ============================================ */
 .pub-item {
   display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 1.25rem;
-  margin-bottom: 1.75rem;
+  grid-template-columns: 170px 1fr;
+  gap: 1.15rem;
+  margin-bottom: 1.9rem;
   align-items: start;
 }
 
@@ -303,15 +303,15 @@ img { max-width: 100%; display: block; }
 .pub-body h3 {
   font-size: 0.82rem;
   font-weight: 600;
-  line-height: 1.35;
-  margin-bottom: 0.25rem;
+  line-height: 1.3;
+  margin-bottom: 0.18rem;
   color: var(--ink);
 }
 .pub-authors {
   font-size: 0.75rem;
   color: var(--ink);
-  margin-bottom: 0.15rem;
-  line-height: 1.45;
+  margin-bottom: 0.1rem;
+  line-height: 1.4;
 }
 .pub-authors .me {
   text-decoration: underline;
@@ -322,7 +322,7 @@ img { max-width: 100%; display: block; }
 .pub-venue {
   font-size: 0.75rem;
   color: var(--ink-soft);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
 }
 .pub-badge {
   display: inline-block;
@@ -363,6 +363,15 @@ img { max-width: 100%; display: block; }
   color: var(--ink-muted);
 }
 .pub-links a:first-child::before { content: none; }
+
+/* Small icon before each link's text (abs / bib / doi / pdf / …).
+   Injected by js/main.js based on the link's visible text. */
+.pub-links a svg {
+  width: 12px;
+  height: 12px;
+  margin-right: 0.3em;
+  flex-shrink: 0;
+}
 
 /* ============================================
    Right sidebar — news
@@ -441,16 +450,30 @@ img { max-width: 100%; display: block; }
     grid-row: 1 / span 3;
   }
   .id-links { grid-column: 2; }
-  .pub-item {
-    grid-template-columns: 130px 1fr;
-    gap: 0.85rem;
-  }
   .sidebar-right {
     margin-top: 1.5rem;
     padding-top: 1.25rem;
     padding-right: 0;
   }
   .section-header { margin-top: 2rem; }
+}
+
+/* ============================================
+   Narrow screens (phones + small tablets + narrow browser windows) —
+   stack publication thumbnail on top of the text
+   for a more readable "card"-style layout.
+   ============================================ */
+@media (max-width: 800px) {
+  .pub-item {
+    grid-template-columns: 1fr;   /* single column: thumb on top, body below */
+    gap: 0.8rem;
+    margin-bottom: 2.2rem;
+  }
+  .pub-thumb {
+    max-width: 170px;   /* keep same width as desktop; just stacks above text */
+  }
+  /* Typography (h3, authors, venue, links, badge) inherits from the base
+     desktop rules — no font-size overrides here on purpose. */
 }
 
 /* Legacy placeholder tint classes — no-op now that images fill the box. */

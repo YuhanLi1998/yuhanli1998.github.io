@@ -60,6 +60,127 @@
 })();
 
 /* ============================================
+   Copy BibTeX to clipboard when the "bib" link is clicked.
+   Each pub's <a data-bib="key">bib</a> looks up its entry from BIBTEX
+   below, copies to clipboard, and briefly flashes "copied!" as feedback.
+   ============================================ */
+(function () {
+  var BIBTEX = {
+    li2026perceived:
+      '@article{li2026perceived,\n' +
+      '  author  = {Li, Yuhan and Lu, Hang},\n' +
+      '  title   = {Perceived legitimacy matters: Building public trust and acceptance of {AI}-generated news images through strategic {AI} disclosure},\n' +
+      '  journal = {Journalism \\& Mass Communication Quarterly},\n' +
+      '  year    = {2026},\n' +
+      '  doi     = {10.1177/10776990261462536}\n' +
+      '}',
+    li2026stitching:
+      '@article{li2026stitching,\n' +
+      '  author  = {Li, Yuhan and Zhang, Annie Li and Lu, Hang},\n' +
+      '  title   = {Stitching, dueting, and playing with science on {TikTok}: An {AI}-powered multimodal approach to understanding interactive science videos and audience engagement},\n' +
+      '  journal = {Computational Communication Research},\n' +
+      '  year    = {2026},\n' +
+      '  doi     = {10.5117/CCR2026.4.2.LI}\n' +
+      '}',
+    li2026navigating:
+      '@article{li2026navigating,\n' +
+      '  author  = {Li, Yuhan and Lu, Hang and Yu, Chao},\n' +
+      '  title   = {Navigating intersectional expectations: A computational multimodal analysis of the effects of identities and communication styles on public engagement with science on {TikTok}},\n' +
+      '  journal = {Information, Communication \\& Society},\n' +
+      '  year    = {2026},\n' +
+      '  doi     = {10.1080/1369118X.2026.2659280}\n' +
+      '}',
+    guo2026cross:
+      '@article{guo2026cross,\n' +
+      '  author  = {Guo, Yufan and Lin, Cong and Li, Yuhan},\n' +
+      '  title   = {Does trending across platforms popularize political topics? A cross-platform spillover framework of public attention},\n' +
+      '  journal = {Information, Communication \\& Society},\n' +
+      '  year    = {2026},\n' +
+      '  doi     = {10.1080/1369118X.2026.2633216}\n' +
+      '}',
+    guo2025civilizing:
+      '@article{guo2025civilizing,\n' +
+      '  author  = {Guo, Yufan and Li, Yuhan and Yang, Tian},\n' +
+      '  title   = {Civilizing social media: The effect of geolocation on the incivility of news comments},\n' +
+      '  journal = {New Media \\& Society},\n' +
+      '  year    = {2025},\n' +
+      '  doi     = {10.1177/14614448231218989}\n' +
+      '}',
+    li2024climate:
+      '@article{li2024climate,\n' +
+      '  author  = {Li, Yuhan and Yu, Beichen and Dai, Jia},\n' +
+      '  title   = {``Climate Change\'\' or ``Global Warming\'\'? The {(Un)}Politicization of climate in {Chinese} social media platform},\n' +
+      '  journal = {Environmental Communication},\n' +
+      '  year    = {2024},\n' +
+      '  doi     = {10.1080/17524032.2024.2327069}\n' +
+      '}'
+  };
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    // Fallback for older browsers / non-HTTPS
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy') ? resolve() : reject();
+      } catch (e) { reject(e); }
+      document.body.removeChild(ta);
+    });
+  }
+
+  document.querySelectorAll('a[data-bib]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var key = a.getAttribute('data-bib');
+      var entry = BIBTEX[key];
+      if (!entry) { console.warn('No BibTeX entry for key:', key); return; }
+      var originalHTML = a.innerHTML;
+      copyText(entry).then(function () {
+        a.innerHTML = 'copied!';
+        a.classList.add('is-copied');
+        setTimeout(function () {
+          a.innerHTML = originalHTML;
+          a.classList.remove('is-copied');
+        }, 1400);
+      }).catch(function () {
+        a.innerHTML = 'copy failed';
+        setTimeout(function () { a.innerHTML = originalHTML; }, 1400);
+      });
+    });
+  });
+})();
+
+/* ============================================
+   Back-to-top button — visible after scrolling past 400px.
+   ============================================ */
+(function () {
+  var btn = document.getElementById('back-to-top');
+  if (!btn) return;
+
+  var visible = false;
+  function update() {
+    var shouldShow = window.scrollY > 400;
+    if (shouldShow !== visible) {
+      visible = shouldShow;
+      btn.classList.toggle('is-visible', visible);
+    }
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
+/* ============================================
    Publication thumbnails — click-to-enlarge lightbox.
    ============================================ */
 (function () {

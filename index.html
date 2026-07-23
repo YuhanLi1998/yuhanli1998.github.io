@@ -63,6 +63,87 @@
   }
   </script>
 
+  <!-- ===== Structured data: publications as ScholarlyArticle entries.
+                Helps Google Scholar / Bing index each paper. ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "Perceived legitimacy matters: Building public trust and acceptance of AI-generated news images through strategic AI disclosure",
+        "author": [
+          { "@type": "Person", "name": "Yuhan Li" },
+          { "@type": "Person", "name": "Hang Lu" }
+        ],
+        "datePublished": "2026",
+        "isPartOf": { "@type": "Periodical", "name": "Journalism & Mass Communication Quarterly" },
+        "sameAs": "https://doi.org/10.1177/10776990261462536"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "Stitching, dueting, and playing with science on TikTok: An AI-powered multimodal approach to understanding interactive science videos and audience engagement",
+        "author": [
+          { "@type": "Person", "name": "Yuhan Li" },
+          { "@type": "Person", "name": "Annie Li Zhang" },
+          { "@type": "Person", "name": "Hang Lu" }
+        ],
+        "datePublished": "2026",
+        "isPartOf": { "@type": "Periodical", "name": "Computational Communication Research" },
+        "sameAs": "https://doi.org/10.5117/CCR2026.4.2.LI"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "Navigating intersectional expectations: A computational multimodal analysis of the effects of identities and communication styles on public engagement with science on TikTok",
+        "author": [
+          { "@type": "Person", "name": "Yuhan Li" },
+          { "@type": "Person", "name": "Hang Lu" },
+          { "@type": "Person", "name": "Chao Yu" }
+        ],
+        "datePublished": "2026",
+        "isPartOf": { "@type": "Periodical", "name": "Information, Communication & Society" },
+        "sameAs": "https://doi.org/10.1080/1369118X.2026.2659280"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "Does trending across platforms popularize political topics? A cross-platform spillover framework of public attention",
+        "author": [
+          { "@type": "Person", "name": "Yufan Guo" },
+          { "@type": "Person", "name": "Cong Lin" },
+          { "@type": "Person", "name": "Yuhan Li" }
+        ],
+        "datePublished": "2026",
+        "isPartOf": { "@type": "Periodical", "name": "Information, Communication & Society" },
+        "sameAs": "https://doi.org/10.1080/1369118X.2026.2633216"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "Civilizing social media: The effect of geolocation on the incivility of news comments",
+        "author": [
+          { "@type": "Person", "name": "Yufan Guo" },
+          { "@type": "Person", "name": "Yuhan Li" },
+          { "@type": "Person", "name": "Tian Yang" }
+        ],
+        "datePublished": "2025",
+        "isPartOf": { "@type": "Periodical", "name": "New Media & Society" },
+        "sameAs": "https://doi.org/10.1177/14614448231218989"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "headline": "\"Climate Change\" or \"Global Warming\"? The (Un)Politicization of climate in Chinese social media platform",
+        "author": [
+          { "@type": "Person", "name": "Yuhan Li" },
+          { "@type": "Person", "name": "Beichen Yu" },
+          { "@type": "Person", "name": "Jia Dai" }
+        ],
+        "datePublished": "2024",
+        "isPartOf": { "@type": "Periodical", "name": "Environmental Communication" },
+        "sameAs": "https://doi.org/10.1080/17524032.2024.2327069"
+      }
+    ]
+  }
+  </script>
+
   <!-- Favicon: shown in browser tabs / bookmarks -->
   <link rel="icon" type="image/png" href="images/favicon.png" />
   <link rel="icon" sizes="32x32" href="images/favicon.png" />
@@ -81,7 +162,7 @@
   <!-- ========== LEFT SIDEBAR: IDENTITY ========== -->
   <aside class="sidebar-left">
     <h1 class="id-name">Yuhan Li</h1>
-    <div class="zh-name" aria-label="李雨浛">李雨浛</div>
+    <div class="zh-name" lang="zh">李雨浛</div>
     <a class="id-email" href="mailto:yhanli@umich.edu">yhanli@umich.edu</a>
 
     <div class="id-photo">
@@ -134,8 +215,7 @@
 
     <article class="pub-item">
       <div class="pub-thumb tint-1">
-        <!-- Replace with: <img src="images/paper1.png" alt="Paper 1 figure" /> -->
-        <img src="images/AIGI.png" alt="AIGI figure" />
+        <img src="images/AIGI.png" alt="Figure summarizing an experiment on how transparent AI disclosure affects perceived legitimacy of AI-generated news images" />
         <span class="pub-link-overlay" aria-hidden="true">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="10.5" cy="10.5" r="6.5" />
@@ -152,6 +232,7 @@
         </p>
         <p class="pub-venue"><i>Journalism & Mass Communication Quarterly</i>, 2026<span class="pub-badge best">Top Student Paper SRA '2025</span></p>
         <p class="pub-links">
+          <a href="#" data-bib="li2026perceived">bib</a>
           <a href="assets/li-lu-2026-perceived-legitimacy-matters-building-public-trust-and-acceptance-of-ai-generated-news-images-through.pdf">pdf</a>
           <a href="https://journals.sagepub.com/doi/abs/10.1177/10776990261462536">doi</a>
           <a href="assets/li-lu-2026-sj-docx-1-jmq-10.1177_10776990261462536.docx">supplemental</a>
@@ -162,7 +243,7 @@
 
         <article class="pub-item">
       <div class="pub-thumb tint-2">
-        <img src="images/CCR_science.png" alt="CCR science figure" />
+        <img src="images/CCR_science.png" alt="Figure illustrating stitch, duet, and reply-to interactions in TikTok science videos and associated audience engagement patterns" />
         <span class="pub-link-overlay" aria-hidden="true">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="10.5" cy="10.5" r="6.5" />
@@ -179,6 +260,7 @@
         </p>
         <p class="pub-venue"><i>Computational Communication Research</i>, 2026</p>
         <p class="pub-links">
+          <a href="#" data-bib="li2026stitching">bib</a>
           <a href="assets/CCR2026.4.2.LI.pdf">pdf</a>
           <a href="https://doi.org/10.5117/CCR2026.4.2.LI">doi</a>
           <a href="https://osf.io/rwz8q/overview">replication</a>
@@ -188,8 +270,7 @@
 
     <article class="pub-item">
       <div class="pub-thumb tint-1">
-        <!-- Replace with: <img src="images/paper1.png" alt="Paper 1 figure" /> -->
-        <img src="images/ICS_identity.png" alt="ICS Identity figure" />
+        <img src="images/ICS_identity.png" alt="Figure showing how TikTok science creators' intersectional identities and communication styles shape public engagement" />
         <span class="pub-link-overlay" aria-hidden="true">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="10.5" cy="10.5" r="6.5" />
@@ -208,7 +289,8 @@
           <i>Information Communication & Society</i>, 2026
         </p>
         <p class="pub-links">
-          <a href="assets/Navigating intersectional expectations  a computational multimodal analysis of the effects of identities and communication styles on public engagement.pdf">pdf</a>
+          <a href="#" data-bib="li2026navigating">bib</a>
+          <a href="assets/li-lu-yu-2026-intersectional-tiktok.pdf">pdf</a>
           <a href="https://www.tandfonline.com/doi/full/10.1080/1369118X.2026.2659280">doi</a>
           <a href="assets/rics_a_2659280_sm1863.docx">supplemental</a>
         </p>
@@ -217,8 +299,7 @@
 
         <article class="pub-item">
       <div class="pub-thumb tint-1">
-        <!-- Replace with: <img src="images/paper1.png" alt="Paper 1 figure" /> -->
-        <img src="images/ICS_attention.png" alt="ICS Attention figure" />
+        <img src="images/ICS_attention.png" alt="Diagram of a cross-platform spillover framework showing how trending political topics propagate public attention across social media platforms" />
         <span class="pub-link-overlay" aria-hidden="true">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="10.5" cy="10.5" r="6.5" />
@@ -237,7 +318,8 @@
           <i>Information Communication & Society</i>, 2026
         </p>
         <p class="pub-links">
-          <a href="assets/Does trending across platforms popularize political topics  A cross-platform spillover framework of public attention.pdf">pdf</a>
+          <a href="#" data-bib="guo2026cross">bib</a>
+          <a href="assets/guo-lin-li-2026-cross-platform-attention.pdf">pdf</a>
           <a href="https://doi.org/10.1080/1369118X.2026.2633216">doi</a>
           <a href="assets/rics_a_2633216_sm5139.docx">supplemental</a>
         </p>
@@ -246,7 +328,7 @@
 
     <article class="pub-item">
       <div class="pub-thumb tint-3">
-        <img src="images/NMS_IP.png" alt="NMS IP figure" />
+        <img src="images/NMS_IP.png" alt="Figure showing how displaying commenters' geolocation on Chinese social media reduces incivility in news comments" />
         <span class="pub-link-overlay" aria-hidden="true">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="10.5" cy="10.5" r="6.5" />
@@ -265,6 +347,7 @@
           <i>New Media & Society</i>, 2025
         </p>
         <p class="pub-links">
+          <a href="#" data-bib="guo2025civilizing">bib</a>
           <a href="assets/guo-et-al-2023-civilizing-social-media-the-effect-of-geolocation-on-the-incivility-of-news-comments.pdf">pdf</a>
           <a href="https://journals.sagepub.com/doi/10.1177/14614448231218989">doi</a>
           <a href="https://osf.io/4qnte/">replication</a>
@@ -275,7 +358,7 @@
 
     <article class="pub-item">
       <div class="pub-thumb tint-4">
-        <img src="images/EC_climate.svg" alt="EC climate figure" />
+        <img src="images/EC_climate.svg" alt="Figure comparing usage of the terms 'climate change' vs 'global warming' on Chinese social media platforms over time" />
         <span class="pub-link-overlay" aria-hidden="true">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="10.5" cy="10.5" r="6.5" />
@@ -292,7 +375,8 @@
         </p>
         <p class="pub-venue"><i>Environmental Communication</i>, 2024 <span class="pub-badge best">Top Student Paper ICA '2022</span></p>
         <p class="pub-links">
-          <a href="assets/Climate Change  or  Global Warming   The  Un Politicization of Climate in Chinese Social Media Platform.pdf">pdf</a>
+          <a href="#" data-bib="li2024climate">bib</a>
+          <a href="assets/li-2024-climate-warming-china.pdf">pdf</a>
           <a href="https://www.tandfonline.com/doi/full/10.1080/17524032.2024.2327069">doi</a>
           <a href="https://www.tandfonline.com/doi/suppl/10.1080/17524032.2024.2327069?scroll=top">supplemental</a>
         </p>
@@ -353,9 +437,15 @@
   <p>
     Last updated <time datetime="2026-07">July 2026</time>
     <span class="dot" aria-hidden="true">·</span>
-    Hosted by GitHub</a>
+    Hosted by GitHub
   </p>
 </footer>
+
+<button id="back-to-top" type="button" aria-label="Back to top" title="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="6 15 12 9 18 15"/>
+  </svg>
+</button>
 
 <script src="js/main.js"></script>
 </body>

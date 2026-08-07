@@ -110,10 +110,10 @@ img { max-width: 100%; display: block; }
    Left sidebar — identity
    ============================================ */
 .id-name {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  line-height: 1.25;
+  font-size: 1.35rem;
+  font-weight: 300;          /* Lato Light — matches Saveski-style thin display */
+  letter-spacing: -0.01em;
+  line-height: 1.15;
   color: var(--ink);
   margin-bottom: 0.5rem;
 }
@@ -166,6 +166,39 @@ img { max-width: 100%; display: block; }
 .id-links li a { color: var(--ink); }
 .id-links li a:hover { color: var(--accent); text-decoration: none; }
 .id-links .arrow { color: var(--ink-muted); margin-left: 0.15em; }
+
+/* Icon-only variant of id-links (row of monochrome social icons) */
+.id-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0;
+  margin: 0.2rem 0 0;
+}
+.id-icons li { display: inline-flex; }
+.id-icons li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+.id-icons li a:hover {
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+/* All icons render at the same visible height; width adapts to each icon's
+   natural aspect ratio so they carry the same visual weight in the row. */
+.id-icons li a svg {
+  height: 22px;
+  width: auto;
+  display: block;
+}
+/* CV is a landscape 2:1 text logo — shrink height so its width matches
+   the visual size of the other (square) icons in the row. */
+.id-icons li a svg.ic-cv {
+  height: 15px;
+}
 
 /* ============================================
    Main content

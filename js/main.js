@@ -76,11 +76,15 @@
       '}',
     li2026stitching:
       '@article{li2026stitching,\n' +
-      '  author  = {Li, Yuhan and Zhang, Annie Li and Lu, Hang},\n' +
-      '  title   = {Stitching, dueting, and playing with science on {TikTok}: An {AI}-powered multimodal approach to understanding interactive science videos and audience engagement},\n' +
-      '  journal = {Computational Communication Research},\n' +
-      '  year    = {2026},\n' +
-      '  doi     = {10.5117/CCR2026.4.2.LI}\n' +
+      '  author    = {Li, Yuhan and Zhang, Annie Li and Lu, Hang},\n' +
+      '  title     = {Stitching, dueting, and playing with science on {TikTok}: An {AI}-powered multimodal approach to understanding interactive science videos and audience engagement},\n' +
+      '  journal   = {Computational Communication Research},\n' +
+      '  volume    = {8},\n' +
+      '  number    = {4},\n' +
+      '  pages     = {1--29},\n' +
+      '  year      = {2026},\n' +
+      '  publisher = {Amsterdam University Press AUP},\n' +
+      '  doi       = {10.5117/CCR2026.4.2.LI}\n' +
       '}',
     li2026navigating:
       '@article{li2026navigating,\n' +
@@ -100,19 +104,27 @@
       '}',
     guo2025civilizing:
       '@article{guo2025civilizing,\n' +
-      '  author  = {Guo, Yufan and Li, Yuhan and Yang, Tian},\n' +
-      '  title   = {Civilizing social media: The effect of geolocation on the incivility of news comments},\n' +
-      '  journal = {New Media \\& Society},\n' +
-      '  year    = {2025},\n' +
-      '  doi     = {10.1177/14614448231218989}\n' +
+      '  author    = {Guo, Yufan and Li, Yuhan and Yang, Tian},\n' +
+      '  title     = {Civilizing social media: The effect of geolocation on the incivility of news comments},\n' +
+      '  journal   = {New Media \\& Society},\n' +
+      '  volume    = {27},\n' +
+      '  number    = {5},\n' +
+      '  pages     = {2996--3016},\n' +
+      '  year      = {2025},\n' +
+      '  publisher = {SAGE Publications Sage UK: London, England},\n' +
+      '  doi       = {10.1177/14614448231218989}\n' +
       '}',
     li2024climate:
       '@article{li2024climate,\n' +
-      '  author  = {Li, Yuhan and Yu, Beichen and Dai, Jia},\n' +
-      '  title   = {``Climate Change\'\' or ``Global Warming\'\'? The {(Un)}Politicization of climate in {Chinese} social media platform},\n' +
-      '  journal = {Environmental Communication},\n' +
-      '  year    = {2024},\n' +
-      '  doi     = {10.1080/17524032.2024.2327069}\n' +
+      '  author    = {Li, Yuhan and Yu, Beichen and Dai, Jia},\n' +
+      '  title     = {``Climate change\'\' or ``global warming\'\'? The {(Un)}Politicization of climate in {Chinese} social media platform},\n' +
+      '  journal   = {Environmental Communication},\n' +
+      '  volume    = {18},\n' +
+      '  number    = {7},\n' +
+      '  pages     = {927--944},\n' +
+      '  year      = {2024},\n' +
+      '  publisher = {Taylor \\& Francis},\n' +
+      '  doi       = {10.1080/17524032.2024.2327069}\n' +
       '}'
   };
 
